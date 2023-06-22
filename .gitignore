@@ -1,0 +1,5 @@
+.vscode
+*/node_modules
+time-pause-1:10:00
+data/dataset/img/*
+time-pause-*
