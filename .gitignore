@@ -2,4 +2,6 @@
 */node_modules
 time-pause-1:10:00
 data/dataset/img/*
+data/raw/*
+data/dataset/json/*
 time-pause-*
