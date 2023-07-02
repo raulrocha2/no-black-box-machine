@@ -69,6 +69,12 @@ class SketchPad{
     }
   }
 
+  triggerUpdate() {
+    if (this.onUpdate) {
+      this.onUpdate(this.paths);
+    }
+  }
+
   #getMouse=(evt)=>{
     const react=this.canvas.getBoundingClientRect();
     return[
@@ -87,8 +93,6 @@ class SketchPad{
       } else {
         this.undoBtn.disabled=true;
       }
-      if (this.onUpdate) {
-        this.onUpdate(this.paths);
-      }
+      this.triggerUpdate();
   }
 }

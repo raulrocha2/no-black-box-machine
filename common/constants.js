@@ -9,7 +9,8 @@ constants.FEATURES = constants.DATASET_DIR+"/features.json";
 constants.SAMPLES = constants.DATASET_DIR+"/samples.json";
 constants.JS_OBJECTS = "../common/js_objects";
 constants.SAMPLES_JS = constants.JS_OBJECTS+"/samples.js";
-constants.FEATURES_JS = constants.JS_OBJECTS+"/features.js";
+constants.FEATURES_JS = constants.JS_OBJECTS+"/features.js"; 
+constants.MIN_MAX_JS = constants.JS_OBJECTS+"/minMax.js"; 
 
 
 if (typeof module !== 'undefined') {
