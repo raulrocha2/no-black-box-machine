@@ -69,7 +69,7 @@ buttona:enabled{
 }
 
 .emphasize{
-  background-color:yellow;
+  background-color:yellow !important;
 }
 
 #container{
@@ -98,4 +98,9 @@ buttona:enabled{
   color: white;
   font-size: 30px;
   position: relative;
+}
+
+#statistics {
+  font-size: 20px;
+  padding: 20px;
 }

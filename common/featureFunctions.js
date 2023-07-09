@@ -27,7 +27,7 @@ featureFunctions.getHeight = (paths) => {
 
 featureFunctions.inUse = [
   // {name:"Path Count", function:featureFunctions.getPathCount},
-  // {name:"Point Count", function:featureFunctions.getPointCount},
+  // {name:"Point Count", function:featureFunctions.getPointCount}
   
   {name:"Width", function:featureFunctions.getWith},
   {name:"Height", function:featureFunctions.getHeight}

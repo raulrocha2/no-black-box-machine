@@ -31,7 +31,7 @@ class Chart{
 
       this.hoveredSample = null;
       this.selectedSample = null;
-      this.nearestSample = null;
+      this.nearestSamples = null;
 
       this.pixelBounds = this.#getPixelBounds();
       this.dataBounds = this.#getDataBounds();
@@ -44,9 +44,9 @@ class Chart{
       this.#addEventListeners();
    }
 
-   showDynamicPoint(point, label, nearestSample) {
+   showDynamicPoint(point, label, nearestSamples) {
       this.dynamicPoint = {point, label};
-      this.nearestSample = nearestSample
+      this.nearestSamples = nearestSamples
       this.#draw();
    }
 
@@ -220,13 +220,13 @@ class Chart{
       const maxX=Math.max(...x);
       const minY=Math.min(...y);
       const maxY=Math.max(...y);
-      const deltaX = maxX - minX;
-      const deltaY = maxY - minY;
-      const maxDelta = Math.max(deltaX,deltaY);
+      const deltaX=maxX-minX;
+      const deltaY=maxY-minY;
+      const maxDelta=Math.max(deltaX,deltaY);
       const bounds={
          left:minX,
-         right:maxX, // minX - maxDelta,
-         top:maxY, // minY + deltaY,
+         right:maxX,//minX+maxDelta,
+         top:maxY,//minY+maxDelta,
          bottom:minY
       };
       return bounds;
@@ -260,14 +260,19 @@ class Chart{
             point
          )
          graphics.drawPoint(ctx, pixelLoc, "rgba(255,255,255,0.7)", 10000000);
-         ctx.beginPath();
-         ctx.moveTo(...pixelLoc);
-         ctx.lineTo(...math.remapPoint(
-            this.dataBounds,
-            this.pixelBounds,
-            this.nearestSample.point
-         ));
-         ctx.stroke();
+         ctx.strokeStyle = "gray";
+         for (const sample of this.nearestSamples) {
+            const point = math.remapPoint(
+               this.dataBounds,
+               this.pixelBounds,
+               sample.point
+            );
+            ctx.beginPath();
+            ctx.moveTo(...pixelLoc);
+            ctx.lineTo(...point);
+            ctx.stroke();
+         }
+         
          graphics.drawImage(ctx, 
                this.styles[label].image,
                pixelLoc
